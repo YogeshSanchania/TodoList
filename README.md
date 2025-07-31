@@ -21,5 +21,27 @@ A clean-architecture-based ASP.NET Core MVC task manager application built using
 
 
 
+## 💻 Getting Started
+
+### ✅ Prerequisites
+
+- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+- Visual Studio 2022
+
+---
+
+### ▶️ How to Run
+
+```bash
+# Step 1: Clone the repository
+git clone https://github.com/YogeshSanchania/TodoList.git
+cd TodoList
+
+# Step 2: Restore packages
+dotnet restore
+
+# Step 3: Run the app
+dotnet run
+
 
 
