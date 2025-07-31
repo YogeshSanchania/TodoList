@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TodoList.Domain.Entities.TaskItem>
+
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Todo List";
+    var filter = ViewBag.Filter as string ?? "All";
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-primary mb-3" asp-action="Create">Add new Task</a>
+
+<form method="get" class="mb-3">
+    <div class="form-group">
+        <label for="filter">Filter:</label>
+        <select id="filter" name="filter" class="form-control" onchange="this.form.submit()">
+            <option value="All" selected="@(filter == "All" ? "selected" : null)">All</option>
+            <option value="Incomplete" selected="@(filter == "InComplete" ? "selected" : null)">Active</option>
+            <option value="Completed" selected="@(filter == "Completed" ? "selected" : null)">Completed</option>
+        </select>
+    </div>
+</form>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.DueDate.ToShortDateString()</td>
+                <td>
+                    @if (task.IsCompleted)
+                    {
+                        <span class="badge bg-success">Completed</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    }
+                </td>
+                <td>
+                    @if (!task.IsCompleted)
+                    {
+                        <a class="btn btn-sm btn-success" asp-action="Complete" asp-route-id="@task.Id">Mark Complete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
