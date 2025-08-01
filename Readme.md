@@ -37,7 +37,7 @@ A clean-architecture-based ASP.NET Core MVC task manager application built using
 git clone https://github.com/YogeshSanchania/TodoList.git
 cd TodoList
 
-# Step 2: Restore packages
+# Step 2: Build project
 dotnet build
 
 # Step 3: Run the app
